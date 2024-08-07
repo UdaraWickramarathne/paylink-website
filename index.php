@@ -10,13 +10,12 @@
     }
 
 
-
     if(isset($_POST['submit'])){
         $username = $_POST['username'];
         $reciever = $_POST['reciever'];
         $password = $_POST['password'];
         $amount = $_POST['amount'];
-
+        
         $key = '0123456789abcdef';
         $iv = 'RandomInitVector';
 
@@ -31,20 +30,21 @@
         if($row){
             if(password_verify($password, $row['Password'])){
                 $_SESSION['payeeAdd'] = $row['PayeeAddress'];
-                $_SESSION['reciever'] = $decryptedAddress;
+                $_SESSION['pAddress'] = $decryptedAddress;
                 $_SESSION['amount'] = $decryptedAmount;
+
                 header('Location: send-money.php');
                 exit();
             }
             else{
                 $_SESSION['error'] = 'Invalid Login Credentials';
-                header('Location: index.php');
+                header("Location: index.php?pAddress=".urlencode($reciever)."&amount=".urlencode($amount));
                 exit();
             }      
         }
         else{
             $_SESSION['error'] = 'Invalid Login Credentials';
-            header('Location: index.php');
+            header("Location: index.php?pAddress=".urlencode($reciever)."&amount=".urlencode($amount));
             exit();
         }
 
@@ -284,7 +284,7 @@
         <div class="login-container">
             <h5>Welcome Back!</h5>
             <input type="text" placeholder="Payee Address" class="input-field" required id="username" name="username">
-            <input type="hidden" name="reciever" id="reciever" value="<?php echo isset($_GET['pAddress']) ? $_GET['pAddress'] : ''; ?>">
+            <input type="hidden" name="reciever" id="reciever" value="<?php echo isset($_GET['pAddress']) ? htmlspecialchars($_GET['pAddress'], ENT_QUOTES, 'UTF-8') : ''; ?>">
             <input type="hidden" name="amount" id="amount" value="<?php echo isset($_GET['amount']) ? $_GET['amount'] : ''; ?>">
             <input type="password" placeholder="Password" class="input-field" required id="password" name="password">
             <div class="checkbox-container">

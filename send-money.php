@@ -146,7 +146,7 @@
             background-color: #007BFF;
             color: white;
             font-size: 1.2em;
-            margin-top: 3.5em;
+            margin-top: 3.3em;
             margin-left: 8em;
             margin-right: 8em;
             height: 2.8em;
@@ -156,8 +156,8 @@
 
         .feedback-message{
             position: absolute;
-            bottom: 7em;
-            left: 5.8em;
+            bottom: 5.3em;
+            left: 5.9em;
             width: 100%;
             color: red;
         }
@@ -228,7 +228,7 @@
 
             .feedback-message {
                 left: 2em;
-                bottom: 6em;
+                bottom: 5.4em;
             }
 
             .login-container Label {
@@ -296,7 +296,7 @@
             <Label>Sender</Label>
             <input type="text" value="<?php echo $_SESSION['payeeAdd']?>" class="input-field" required id="sender" name="sender" readonly>
             <Label>Reciever</Label>
-            <input type="text" value="<?php echo $_SESSION['reciever']?>" class="input-field" required id="reciever" name="reciever" readonly>
+            <input type="text" value="<?php echo $_SESSION['pAddress']?>" class="input-field" required id="reciever" name="reciever" readonly>
             <Label>Amount</Label>
             <input type="number" class="input-field" required id="amount" name="amount" readonly value="<?php echo $_SESSION['amount']?>">
             <Label>Message(Optional)</Label>
