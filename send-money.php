@@ -152,6 +152,12 @@
             height: 2.8em;
             border: none;
             border-radius: 25px;
+            transition: background-color 0.25s;
+        }
+        #submit-btn:hover {
+            cursor: pointer;
+            background-color: black;
+            border: 1px solid #007BFF;
         }
 
         .feedback-message{

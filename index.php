@@ -158,7 +158,7 @@
             height: 2.8em;
             border: none;
             border-radius: 25px;
-            transition: background-color 0.15s;
+            transition: background-color 0.25s;
         }
         #submit-btn:hover{
             cursor: pointer;
